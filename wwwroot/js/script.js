@@ -15,7 +15,7 @@ function agregarProducto() {
     };
 
     $.ajax({
-        url: 'https://myapi.tesvg.com.mx/productos',
+        url: 'https://aarizmendi.tesvg.com.mx/productos',
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify(nuevoProducto),
@@ -42,7 +42,7 @@ function limpiar(){
 
 function eliminarProducto(productId){
 
-    let url = 'https://myapi.tesvg.com.mx/productos/' + productId;
+    let url = 'https://aarizmendi.tesvg.com.mx/productos/' + productId;
     alert(url);
     $.ajax({
 	url: url,
@@ -65,7 +65,7 @@ function eliminarProducto(productId){
     
 function getProducts(){
     limpiar();
-  $.ajax ({url: 'https://myapi.tesvg.com.mx/productos',
+  $.ajax ({url: 'https://aarizmendi.tesvg.com.mx/productos',
 	     cache: false,
 	     success: function (result) {
 		 console.log(result[0]);
