@@ -1,0 +1,99 @@
+function agregarPersona() {
+    // Capturamos lo que el usuario escribió en la pantalla
+    let nombreInput = $('#nombre').val();
+    let apaternoInput = $('#apaterno').val();
+    let amaternoInput = $('#amaterno').val();
+
+    // Validación básica en el Frontend
+    if(!nombreInput || !apaterno || !amaternoInput) {
+        alert("Por favor, llena todos los campos.");
+        return;
+    }
+
+    let nuevaPersona = {
+        nombre: nombreInput,
+        apellido_paterno: apaternoInput,
+	apellido_materno: amaternoInput,
+	
+    };
+
+    $.ajax({
+        url: 'https://myapi.tesvg.com.mx/personas',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(nuevaPersona),
+        success: function(resultado) {
+            alert('Registro agregado con éxito');
+            // Limpiamos los inputs del formulario
+            $('#nombre').val('');
+            $('#apaterno').val('');
+	    $('#materno').val('');
+	    getPeople();
+	    
+        },
+        error: function() {
+            alert('Error al conectar con el servidor.');
+        }
+    });
+    
+}
+
+
+
+function limpiar(){
+    $('#personas').html("");
+}
+
+function eliminarPersona(personaId){
+
+    let url = 'https://myapi.tesvg.com.mx/personas/' + personaId;
+    alert(url);
+    $.ajax({
+	url: url,
+	type: 'DELETE',
+	success: function(resultado) {
+	    limpiar();
+            getPeople();
+	},
+	error: function(error) {
+            console.error('Hubo un error al eliminar:', error);
+            alert('No se pudo eliminar el producto.');
+	}
+    });
+
+    
+}
+
+
+
+    
+function getPeople(){
+    limpiar();
+  $.ajax ({url: 'https://myapi.tesvg.com.mx/personas',
+	     cache: false,
+	     success: function (result) {
+		 console.log(result[0]);
+
+
+		 // 2. Recorremos el array con $.each de jQuery
+		 $.each(result, function(index, personas) {
+		     // Creamos la estructura HTML con los datos
+		     var itemHtml = "<div class='col-12 col-sm-6 col-md-3'> <div class='card mb-4 text-muted shadow border-primary'><div class='card-body'><h5> Nombre: " +
+			 personas.nombre +
+			 "</h5><h5> A. Paterno: " +
+			 personas.apellido_paterno + "</h5>"+
+			 "<h5>A. Materno: "   + personas.apellido_materno + "</h5>"+
+			 "</div><div class='card-footer bg-white d-flex justify-content-end'><button class='btn btn-sm btn-outline-primary' onclick='eliminarPersona("+
+		     personas.id +
+");'>Eliminar</button></div></div></div>";
+		     
+		     // 3. Lo agregamos al contenedor en el HTML
+		     $('#personas').append(itemHtml);
+		 });
+
+
+		 
+	     }
+	    });
+}
+

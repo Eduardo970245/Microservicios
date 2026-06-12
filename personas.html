@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="./wwwroot/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./wwwroot/css/bootstrap-icons.min.css">
+    <script src="./wwwroot/js/jquery-4.0.0.min.js"></script>
+    <script src="./wwwroot/js/personas.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="px-3 py-2 text-bg-primary border-bottom">
+        <div class="container">
+          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none"> 
+              <i class="bi bi-bootstrap fw-bold fs-5 pe-2"></i>
+            </a>
+            <nav >
+            <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+              <li><a class="nav-link text-white" href="#"> <i class="bi bi-house fw-bold fs-5 pe-2"></i>Home</a></li>
+              <li><a class="nav-link text-white" href="#"> 
+                  <i class="bi bi-box-arrow-in-left fw-bold fs-5 pe-2"></i>Login
+                </a></li>
+
+            </ul>
+            </nav>
+          </div>
+
+        </div>
+      </div>
+    </header>
+    <div class="container-fluid">
+
+      <div class="row mt-5">
+
+        <aside class="col-8 col-sm-6 col-md-3 col-lg-3 col-xl-2 d-none d-lg-block show"
+        style="position: fixed; top: 0;bottom: 0;left: 0;border-right: 1px solid var(--bs-border-color-translucent); margin-top:70px; padding: 15px 0 0;z-index: 999; overflow-y: auto;">
+        <div class="px-3">
+          <nav>
+          <ul class="nav nav-pills flex-column mb-auto">            
+            <li class="nav-item">
+              <a class="nav-link" href="index.html" onclick="document.getElementById('lightbulb').src='./wwwroot/img/bulboff.gif'">
+              <i class="bi bi-house fw-bold fs-5 pe-2"></i>
+              Inicio</a>
+            </li>
+	    <li class="nav-item">
+              <a class="nav-link" href="productos.html" onclick="document.getElementById('lightbulb').src='./wwwroot/img/bulboff.gif'">
+              <i class="bi bi-grid fw-bold fs-5 pe-2"></i>
+              Productos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active"  href="personas.html" onclick="document.getElementById('lightbulb').src='./wwwroot/img/bulbon.gif'">
+              <i class="bi bi-people fw-bold fs-5 pe-2"></i>
+              Personas</a>
+            </li>
+          </ul>
+        </nav>
+        </div>
+        
+      </aside>
+
+      <main class="col-lg-9 col-xl-10 offset-lg-3 offset-xl-2">
+
+	 <div id="personas" class='row'>
+	 </div>
+        <div class="row">
+
+	  
+	  
+	  <div class="col-12 col-lg-4">
+            
+            <div class="d-flex justify-content-between p-5">
+              <button class="btn btn-outline-success" onclick="limpiar();">
+                <i class="bi bi-arrow-counterclockwise fw-bold fs-5 pe-2"></i>
+                Limpiar
+              </button>
+              <button class="btn btn-outline-primary" onclick="getPeople();">
+                <i class="bi bi-people-fill fw-bold fs-5 pe-2"></i>
+                Ver personas
+              </button>
+
+            </div>
+
+	  
+            
+
+          </div>
+
+	  <div class="row g-3 mt-5">
+
+
+	  <div class="col-3">
+	    <input class="form-control" type="text" id="nombre" placeholder="Nombre">
+	  </div>
+	  <div class="col-3">
+	    <input class="form-control" type="text" id="apaterno" placeholder="Primer apellido">
+	  </div>
+	  <div class="col-3">
+	    <input class="form-control" type="text" id="amaterno" placeholder="Segundo apellido">
+	  </div>
+	  <div class="col-3">
+	  <button class="btn btn-sm btn-outline-primary" onclick="agregarPersona();">
+            <i class="bi bi-save fw-bold fs-5 pe-2"></i>
+            Guardar
+          </button>
+	  </div>
+
+	 </div>
+          
+      </main>
+
+      </div>
+      
+      <div class="row">
+        
+      </div>
+      
+    </div>
+    
+    
+    
+
+
+    <script src="./js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
+
